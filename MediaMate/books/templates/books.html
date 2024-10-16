@@ -38,22 +38,27 @@
         </nav>
 
 
-
-        <div class="row">
-          {% for book in books %}
-              <div class="col-md-3" style='margin-top:30px;'>
-                  <div class="cards">
-                      <div class="card-body"> 
-                          <img class="card-img-top" src="{{ book.image }}" alt="Unable to Load">
-                      </div>
-                      <h3>{{ book.name }}</h3>
-                      <h5>{{ book.author }}</h5>
-                      <h5>Votes: {{ book.votes }}</h5>
-                      <h5>Rating: {{ book.rating }}</h5>
-                  </div>
-              </div>
-          {% endfor %}
-      </div>
-  </div>
+        <h2 class="text-center my-4">TOP 50 BOOKS</h2>
+        <h2 class="text-center my-4">(Popularity Based)</h2>
+        <div class="container">
+            <div class="row">
+                {% for book in books %}
+                    <div class="col-md-3 col-sm-6 mb-4">
+                        <div class="card shadow-sm">
+                            <img class="card-img-top" src="{{ book.image }}" alt="Unable to Load">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">{{ book.name }}</h5>
+                                <h5 class="card-subtitle mb-2 text-muted">By: {{ book.author }}</h5>
+                                <h6 class="card-text">Votes: {{ book.votes }}</h6>
+                                <h6 class="card-text">Rating: {{ book.rating }}</h6 >
+                                 
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                
+            </div>
+        </div>
+        
      </body>
 </html>

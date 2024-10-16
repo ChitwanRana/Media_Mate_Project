@@ -18,9 +18,15 @@ from django.contrib import admin
 from django.urls import path
 from movies.views import *
 from books.views import *
-
+from movies.views import *
+from songs.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',movies,name='movies'),
-    path('books/',books,name='books')
+    path('',home,name='home'),
+    path('books/',books,name='books'),
+    path('movies/',movies,name='movies'),
+    path('songs/',songs,name='songs'),
+    path('About/',About,name='About'),
+    path('features/',Features,name='features'),
+    path('aboutus/',AboutUs,name='aboutus'),
 ]

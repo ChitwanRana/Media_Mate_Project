@@ -29,4 +29,6 @@ urlpatterns = [
     path('About/',About,name='About'),
     path('features/',Features,name='features'),
     path('aboutus/',AboutUs,name='aboutus'),
+    path('recommend/', recommend, name='recommend'),
+    # path('book_recommend/', book_recommend, name='book_recommend'),
 ]

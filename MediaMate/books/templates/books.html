@@ -1,8 +1,15 @@
 {% extends "index.html" %}
 {% block name %}
 
-    <h2 class="text-center my-4">TOP 50 BOOKS</h2>
-        <h2 class="text-center my-4">(Popularity Based)</h2>
+<div class="position-relative my-4">
+    <h2 class="text-center">TOP 50 BOOKS</h2>
+    <button type="button" class="btn position-absolute" style="top: 0; right: 5rem; background-color: #15e8c1; border-color: #15e8c1; color: black;" onclick="window.location.href='/recommend'">Recommend</button>
+</div>
+<h2 class="text-center my-4">(Popularity Based)</h2>
+
+
+
+       
         <div class="container">
             <div class="row">
                 {% for book in books %}

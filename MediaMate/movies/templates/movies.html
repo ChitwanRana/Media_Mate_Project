@@ -3,20 +3,32 @@
 {% block name %}
    
 <div class="container">
-     <div class="row justify-content-center">
-         <div class="col-md-6">
-             <!-- Form Section -->
-             <div class="position-relative my-4">
-                 <h2 class="text-center" style="margin:20px;">Welcome to Movie Recommendation System</h2>
- 
-                 <form action="{% url 'movies' %}" method="POST" class="text-center">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <!-- Form Section -->
+            <div class="position-relative my-4">
+                <h2 class="text-center" style="margin:20px;">Welcome to Movie Recommendation System</h2>
+
+                <form action="{% url 'movies' %}" method="POST" class="text-center">
                     {% csrf_token %}
                     <textarea class="form-control" rows="6" name="movie_input" placeholder="Enter Movies details here..."></textarea><br>
                     <button type="submit" class="btn btn-lg btn-warning mt-3">Recommend</button>
                 </form>
-             </div>
-         </div>
-     </div>
- </div>
+            </div>
+            
+            <!-- Recommendation Section -->
+            {% if recommended_movies %}
+            <div class="recommendations mt-5">
+                <h3 class="text-center">Recommended Movies:</h3>
+                <ul class="list-group text-center">
+                    {% for movie in recommended_movies %}
+                        <li class="list-group-item">{{ movie }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
  
 {% endblock name %}

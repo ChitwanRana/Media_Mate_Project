@@ -9,13 +9,33 @@
             <div class="position-relative my-4">
                 <h2 class="text-center" style="margin:20px;">Welcome to Book Recommendation System</h2>
 
-                <form action="{% url 'movies' %}" method="POST" class="text-center">
+                <form action="{% url 'recommend' %}" method="POST" class="text-center">
                     {% csrf_token %}
-                    <textarea class="form-control" rows="6" name="movie_input" placeholder="Enter Movies details here..."></textarea><br>
+                    <textarea class="form-control" rows="6" name="user_input" placeholder="Enter Book details here..."></textarea><br>
                     <button type="submit" class="btn btn-lg btn-warning mt-3">Recommend</button>
                 </form>
             </div>
-            
+
+            <!-- Error Message Section -->
+            {% if error %}
+                <div class="alert alert-danger text-center">
+                    {{ error }}
+                </div>
+            {% endif %}
+
+            <!-- Recommendations Section -->
+            {% if data %}
+                <h3 class="text-center mt-4">Recommended Books:</h3>
+                <ul class="list-group mt-3">
+                    {% for item in data %}
+                        <li class="list-group-item">
+                            <strong>Title:</strong> {{ item.0 }}<br>
+                            <strong>Author:</strong> {{ item.1 }}<br>
+                            <img src="{{ item.2 }}" alt="{{ item.0 }}" class="img-fluid" style="max-width: 100px;">
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
         </div>
     </div>
 </div>

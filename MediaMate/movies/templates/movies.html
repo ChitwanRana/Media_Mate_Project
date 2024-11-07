@@ -16,13 +16,20 @@
                 </form>
             </div>
             
+            <!-- Error Message Section -->
+            {% if error_message %}
+            <div class="alert alert-danger mt-3 text-center">
+                {{ error_message }}
+            </div>
+            {% endif %}
+            
             <!-- Recommendation Section -->
             {% if recommended_movies %}
-            <div class="recommendations mt-5">
-                <h3 class="text-center">Recommended Movies:</h3>
-                <ul class="list-group text-center">
+            <div class="mt-4">
+                <h3>Recommended Movie:</h3>
+                <ul>
                     {% for movie in recommended_movies %}
-                        <li class="list-group-item">{{ movie }}</li>
+                        <li>{{ movie }}</li>
                     {% endfor %}
                 </ul>
             </div>

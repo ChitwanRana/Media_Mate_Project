@@ -27,38 +27,35 @@ def books(request):
 def recommend(request): 
     if request.method == 'POST':
         # Get the user input from the form
-        user_input = request.POST.get('user_input')
+        book_name = request.POST.get('user_input')
         
-        # Ensure 'pt' is a pandas DataFrame
-        if isinstance(pt, pd.DataFrame):
+        # Debug pt type
+        print(f"pt type: {type(pt)}")
+
+        if isinstance(pt, (pd.DataFrame, pd.Series)):
+            # Ensure pt.index is accessible
             try:
-                # index fetch
-                index = np.where(pt.index == user_input)[0][0]
-                similar_items = sorted(list(enumerate(similarity_scores[index])), key=lambda x: x[1], reverse=True)[1:5]
+                index = np.where(pt.index == book_name)[0][0]
             except IndexError:
-                # Handle case where user_input doesn't exist in pt
-                return render(request, 'book_recommend.html', {'error': "Book not found."})
-
-
-            print(type(pt))             # This should be a pandas DataFrame or Series
-            print(type(similarity_scores))   # This should be a numpy array or a list
-            print(type(books))               # This should be a pandas DataFrame
-
-            data = []
-            for i in similar_items:
-                item = []
-                temp_df = books[books['Book-Title'] == pt.index[i[0]]]
-                item.extend(list(temp_df.drop_duplicates('Book-Title')['Book-Title'].values))
-                item.extend(list(temp_df.drop_duplicates('Book-Title')['Book-Author'].values))
-                item.extend(list(temp_df.drop_duplicates('Book-Title')['Image-URL-M'].values))
-                
-                data.append(item)
-
-            # Pass the recommended books to the template
-            return render(request, 'book_recommend.html', {'data': data, 'user_input': user_input})
+                return render(request, 'book_recommend.html', {'error': 'Book not found.'})
         else:
-            return render(request, 'book_recommend.html', {'error': "Data format error."})
+            return render(request, 'book_recommend.html', {'error': 'Pivot table (pt) is not defined properly.'})
+
+        # Proceed with the rest of the recommendation logic
+        similar_items = sorted(list(enumerate(similarity_scores[index])), key=lambda x: x[1], reverse=True)[1:5]
+        
+        data = []
+        for i in similar_items:
+            item = []
+            temp_df = books[books['Book-Title'] == pt.index[i[0]]]
+            item.extend(list(temp_df.drop_duplicates('Book-Title')['Book-Title'].values))
+            item.extend(list(temp_df.drop_duplicates('Book-Title')['Book-Author'].values))
+            item.extend(list(temp_df.drop_duplicates('Book-Title')['Image-URL-M'].values))
+            
+            data.append(item)
+        
+        return render(request, 'book_recommend.html', {'data': data})
     
-    # In case of GET request
     return render(request, 'book_recommend.html')
+
 

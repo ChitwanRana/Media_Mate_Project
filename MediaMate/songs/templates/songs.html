@@ -1,5 +1,40 @@
 {% extends "index.html" %}
 
 {% block name %}
-<h1>Welcome to  Songs Page </h1>
+   
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <!-- Form Section -->
+            <div class="position-relative my-4">
+                <h2 class="text-center" style="margin:20px;">Welcome to Song Recommendation System</h2>
+
+                <!-- Song Recommendation Form -->
+                <form action="{% url 'songs' %}" method="POST" class="text-center">
+                    {% csrf_token %}
+                    <textarea class="form-control" rows="6" name="song_input" placeholder="Enter Song details here..."></textarea><br>
+                    <button type="submit" class="btn btn-lg btn-warning mt-3">Recommend</button>
+                </form>
+            </div>
+            
+            <!-- Display recommendations or error message -->
+            {% if recommended_songs %}
+                <div class="mt-4">
+                    <h3>Recommended Songs:</h3>
+                    <ul>
+                        {% for song in recommended_songs %}
+                            <li>{{ song }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% elif error %}
+                <div class="mt-4">
+                    <p class="text-danger">{{ error }}</p>
+                </div>
+            {% endif %}
+            
+        </div>
+    </div>
+</div>
+
 {% endblock name %}

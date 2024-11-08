@@ -20,7 +20,7 @@
                                 <h5 class="card-title">{{ book.name }}</h5>
                                 <h5 class="card-subtitle mb-2 text-muted">By: {{ book.author }}</h5>
                                 <h6 class="card-text">Votes: {{ book.votes }}</h6>
-                                <h6 class="card-text">Rating: {{ book.rating }}</h6 >
+                                <h6 class="card-text">Rating: {{ book.rating |floatformat:2}}</h6 >
                                  
                             </div>
                         </div>

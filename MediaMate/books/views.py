@@ -36,7 +36,7 @@ def recommend(request):
 
         # Ensure similarity_scores is defined and valid
         try:
-            similar_items = sorted(list(enumerate(similarity_scores[index])), key=lambda x: x[1], reverse=True)[1:5]
+            similar_items = sorted(list(enumerate(similarity_scores[index])), key=lambda x: x[1], reverse=True)[1:6]
         except IndexError:
             return render(request, 'book_recommend.html', {'error': 'Invalid index for similarity scores'})
 

@@ -33,7 +33,7 @@ def movies(request):
 
             recommended_movies = [movies.iloc[i[0]]['title'] for i in movies_list]
         else:
-            error_message = "Movie not found in the dataset. Please try again."
+            error_message = "Movie not found . Please try with proper name ."
 
     return render(request, 'movies.html', {
         'movie_titles': movie_titles,

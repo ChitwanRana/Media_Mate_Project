@@ -1,7 +1,7 @@
 {% extends "index.html" %}
 
 {% block name %}
-   
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -16,23 +16,23 @@
                     <button type="submit" class="btn btn-lg btn-warning mt-3">Recommend</button>
                 </form>
             </div>
-            
+
             <!-- Display recommendations or error message -->
             {% if recommended_songs %}
                 <div class="mt-4">
-                    <h3>Recommended Songs:</h3>
-                    <ul>
+                    <h3 class="text-center">Recommended Songs:</h3>
+                    <ul class="list-group mt-3">
                         {% for song in recommended_songs %}
-                            <li>{{ song }}</li>
+                            <li class="list-group-item">{{ song }}</li>
                         {% endfor %}
                     </ul>
                 </div>
             {% elif error %}
-                <div class="mt-4">
-                    <p class="text-danger">{{ error }}</p>
+                <div class="alert alert-danger mt-4 text-center">
+                    {{ error }}
                 </div>
             {% endif %}
-            
+
         </div>
     </div>
 </div>

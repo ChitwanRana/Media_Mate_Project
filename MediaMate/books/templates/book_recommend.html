@@ -3,7 +3,7 @@
 {% block name %}
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-6">
+        <div class="col-md-6 position-relative">
             <!-- Form Section -->
             <div class="position-relative my-4">
                 <h2 class="text-center" style="margin:20px;">Welcome to Book Recommendation System</h2>
@@ -41,6 +41,21 @@
                     {% endfor %}
                 </div>
             {% endif %}
+
+            <!-- Example Books Floating Card -->
+            <div class="card position-absolute" style="top: 100px; right: -310px; width: 250px; border: 1px solid #ddd; border-radius: 8px; background-color:#cccccc;">
+                <div class="card-body">
+                    <h5 class="card-title">You can TRY following  Books</h5>
+                    <ul class="list-unstyled">
+                        <li>The Catcher in the Rye</li>
+                        <li>To Kill a Mockingbird</li>
+                        <li>1984</li>
+                        <li>Pride and Prejudice</li>
+                        <li>The Great Gatsby</li>
+                        <li>The Da Vinci Code</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </div> <!-- Close the container div -->

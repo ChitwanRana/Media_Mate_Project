@@ -1,10 +1,9 @@
 {% extends "index.html" %}
 
 {% block name %}
-   
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-6">
+        <div class="col-md-6 position-relative">
             <!-- Form Section -->
             <div class="position-relative my-4">
                 <h2 class="text-center" style="margin:20px;">Welcome to Movie Recommendation System</h2>
@@ -34,8 +33,22 @@
                 </ul>
             </div>
             {% endif %}
+            
+            <!-- Example Movies Floating Card -->
+            <div class="card position-absolute" style="top: 100px; right: -300px; width: 250px; border: 1px solid #ddd; border-radius: 8px; background-color:#cccccc;">
+                <div class="card-body">
+                    <h5 class="card-title">You Can TRY following Movies </h5>
+                    <ul class="list-unstyled">
+                        <li>Inception</li>
+                        <li>The Dark Knight</li>
+                        <li>Interstellar</li>
+                        <li>The Avengers</li>
+                        <li>Forrest Gump</li>
+                        <li>The Godfather</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </div>
- 
 {% endblock name %}

@@ -1,1 +1,1 @@
-web: gunicorn MediaMate.wsgi --log-file -
+web: gunicorn MediaMate.wsgi:application

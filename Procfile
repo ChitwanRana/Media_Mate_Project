@@ -1,1 +1,1 @@
-web: gunicorn MediaMate.wsgi:application
+web: waitress-serve --listen=*:8000 MediaMate.wsgi:application

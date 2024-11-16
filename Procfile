@@ -1,1 +1,1 @@
-web: waitress-serve --port=$PORT MediaMate.wsgi:application
+web: gunicorn MediaMate.wsgi:application --bind 0.0.0.0:$PORT

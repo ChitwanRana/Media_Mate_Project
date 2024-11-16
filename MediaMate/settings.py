@@ -25,7 +25,12 @@ SECRET_KEY = 'django-insecure-7ieu5unm40zque8hzm+8=&_x4f2!l2y%k&c4lhj7)+s4or@-7s
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['media-mate-project.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'media-mate-project-1.onrender.com',
+]
+
 
 
 # Application definition
